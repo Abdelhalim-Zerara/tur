@@ -1,0 +1,13 @@
+.tag{
+    min-width: 0;
+    max-width: 80%;
+    height: 22px;
+    width: max-content;
+    margin: 0px 0px 4px;
+    overflow: "visible";
+    word-break: "break-word";
+    font-size: 12px;
+    line-height: 1.75;
+    padding: 0px 10px;
+    border-radius: 5px;
+}

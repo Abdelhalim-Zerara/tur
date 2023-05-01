@@ -1,0 +1,33 @@
+
+.nav-btn{
+    padding: 10px;
+    font-family: Lato; 
+    font-size: 16px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    color: rgb(28, 20, 78);
+    border-radius: 10px;  
+    background-color: white;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+
+  .nav-btn:hover {
+    background-color: rgba(4, 104, 135, 0.5);
+    color: white;
+  }
+
+  .nav-btn.active {
+    background-color: rgb(4, 104, 135);
+  }
+
+  .nav-btn svg{
+    margin-right: 8px;
+    color: #1c144e;
+    opacity: 0.5;
+  }
+
+  
+  

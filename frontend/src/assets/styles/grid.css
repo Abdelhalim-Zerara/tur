@@ -1,0 +1,28 @@
+.wrapper {
+    display: grid;
+    grid-template-areas: 
+      "sidebar header header"
+      "sidebar content content";
+    grid-template-rows: 70px 1fr; 
+    grid-template-columns: 300px 1fr; 
+  }
+  
+  .header {
+    grid-area: header;
+    background-color:#f9fbfd;
+    color: #fff;
+    border-bottom: 1px solid #dedede;
+    padding: 1rem;
+  }
+  
+  .sidebar {
+    padding: 150px 16px;
+    grid-area: sidebar;
+    border-right: 1px solid #dedede;
+    background-color: #fff;
+}
+  
+  .content {
+    grid-area: content;
+    margin: 16px;
+  }
