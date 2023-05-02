@@ -18,3 +18,8 @@ Appointment Manager is a web application for managing appointments. It allows us
 * Implement email notifications for appointment status changes
 * Improve accessibility and usability
 * Add tests
+
+# Inspiration source
+https://app.trouver-un-reparateur.fr/
+https://www.linkedin.com/company/shifter-logiciel/mycompany/
+https://www.instagram.com/shifter_logiciel/
