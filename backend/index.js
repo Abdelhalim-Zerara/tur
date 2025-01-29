@@ -15,14 +15,14 @@ app.use('/api', cors(corsOptions));
 
 require('dotenv').config();
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 80;
 
 
-mongoose.connect('mongodb://localhost/turdb').then(() => {
-console.log("Connected to Database");
-}).catch((err) => {
-    console.log("Not Connected to Database ERROR! ");
-});
+// mongoose.connect('mongodb://localhost/turdb').then(() => {
+// console.log("Connected to Database");
+// }).catch((err) => {
+//     console.log("Not Connected to Database ERROR! ");
+// });
 // Set up middleware
 app.use(express.json());
 
@@ -30,9 +30,12 @@ app.use('/api/users', userRouter );
 
 app.use('/api/appointements', appointementRouter );
 
-
+app.get('/', (req, res) => {
+  res.send('Hello from Express server in Cloud Shell!');
+});
 
 app.listen(PORT, (req, res) => {
     console.log('listening on port ' + PORT);
+    console.log(req);
 })
 

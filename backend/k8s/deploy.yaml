@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tur-backend
+  labels:
+    app: tur
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tur
+  template:
+    metadata:
+      labels:
+        app: tur
+    spec:
+      containers:
+        - name: express-container
+          image: us-central1-docker.pkg.dev/turgcp/tur-repository/tur:v1.0 
+          ports:
+            - containerPort: 80 
