@@ -1,6 +1,6 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/turgcp/tur-repository/tur:v1.0', '.']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/turgcp/tur-repository/tur:v1.0', './backend']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'us-central1-docker.pkg.dev/turgcp/tur-repository/tur:v1.0']
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -9,7 +9,6 @@ steps:
       - '-c'
       - |
         kubectl set image deployment/tur-backend express-container=us-central1-docker.pkg.dev/turgcp/tur-repository/tur:v1.0 --record
-
 options:
   logging: CLOUD_LOGGING_ONLY
 
