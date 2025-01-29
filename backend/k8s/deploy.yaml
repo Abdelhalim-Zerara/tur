@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: express-container
-          image: us-central1-docker.pkg.dev/turgcp/tur-repository/tur:v1.0 
+          image: us-central1-docker.pkg.dev/turgcp/tur-repository/tur:$(cat ../VERSION)
           ports:
-            - containerPort: 80 
+            - containerPort: 80

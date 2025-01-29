@@ -1,9 +1,9 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build','--no-cache', '-t', 'us-central1-docker.pkg.dev/turgcp/tur-repository/tur:v1.0', './backend']
+    args: ['build','--no-cache', '-t', 'us-central1-docker.pkg.dev/turgcp/tur-repository/tur:$(cat VERSION)', './backend']
  
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/turgcp/tur-repository/tur:v1.0']
+    args: ['push', 'us-central1-docker.pkg.dev/turgcp/tur-repository/tur:$(cat VERSION)']
   
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: bash
@@ -20,7 +20,7 @@ steps:
       - |
         kubectl apply -f backend/k8s/deployment.yaml
         kubectl apply -f backend/k8s/service.yaml  
-        kubectl set image deployment/tur-backend express-container=us-central1-docker.pkg.dev/turgcp/tur-repository/tur:v1.0 --record
+        kubectl set image deployment/tur-backend express-container=us-central1-docker.pkg.dev/turgcp/tur-repository/tur:$(cat VERSION) --record
 
 options:
   logging: CLOUD_LOGGING_ONLY
