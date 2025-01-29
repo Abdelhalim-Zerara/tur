@@ -31,7 +31,7 @@ app.use('/api/users', userRouter );
 app.use('/api/appointements', appointementRouter );
 
 app.get('/', (req, res) => {
-  res.send('Hello from Express server in Cloud Shell!');
+  res.send('Hello from Express server in Cloud Shell!V2');
 });
 
 app.listen(PORT, (req, res) => {
