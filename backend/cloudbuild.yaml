@@ -1,13 +1,8 @@
 steps:
-  # Step 1: Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'us-central1-docker.pkg.dev/turgcp/tur-repository/tur:v1.0', '.']
-
-  # Step 2: Push the Docker image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'us-central1-docker.pkg.dev/turgcp/tur-repository/tur:v1.0']
-
-  # Step 3: Update the Kubernetes deployment with the new image
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: bash
     args:
@@ -15,8 +10,7 @@ steps:
       - |
         kubectl set image deployment/tur-backend express-container=us-central1-docker.pkg.dev/turgcp/tur-repository/tur:v1.0 --record
 
-# Optionally, specify artifacts to be stored after the build
-artifacts:
-  objects:
-    location: 'gs://turgcp-artifacts/'
-    paths: ['us-central1-docker.pkg.dev/turgcp/tur-repository/tur:v1.0']
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+serviceAccount: projects/turgcp-id/serviceAccounts/turgcp@appspot.gserviceaccount.com
