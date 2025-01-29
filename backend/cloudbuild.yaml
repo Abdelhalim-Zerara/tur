@@ -1,14 +1,27 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'us-central1-docker.pkg.dev/turgcp/tur-repository/tur:v1.0', './backend']
+ 
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'us-central1-docker.pkg.dev/turgcp/tur-repository/tur:v1.0']
+  
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: bash
     args:
       - '-c'
       - |
+        gcloud config set project turgcp
+        gcloud container clusters get-credentials tur-cluster --zone=us-central1-c --project=turgcp
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: bash
+    args:
+      - '-c'
+      - |
+        kubectl apply -f backend/k8s/deployment.yaml
+        kubectl apply -f backend/k8s/service.yaml  
         kubectl set image deployment/tur-backend express-container=us-central1-docker.pkg.dev/turgcp/tur-repository/tur:v1.0 --record
+
 options:
   logging: CLOUD_LOGGING_ONLY
 
